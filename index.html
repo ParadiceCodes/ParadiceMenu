@@ -203,11 +203,11 @@
 
   <script>
     const menuData = {
-      categories: ["Snack", "Fritti", "Dolci"],
+      categories: ["Snack", "Fritti", "Burgers", "Insalate", "Aperitivi & Taglieri", "Paradice Combo", "Piatti Messicani", "Drinks", "Spritz", "Caffetteria", "Dolci"],
       products: [
-	  <!-- CATEGORIA SNACK -->
-        { name: "Arachidi", category: "Snack", price: 2.00 },
-        { name: "Nachos", category: "Snack", price: 4.00 },
+	        <!-- CATEGORIA SNACK -->
+                { name: "Arachidi", category: "Snack", price: 2.00 },
+                { name: "Nachos", category: "Snack", price: 4.00 },
 		{ name: "Nachos Con Cheddar e Jalapeno", category: "Snack", price: 6.00 },
 		{ name: "Olive", category: "Snack", price: 3.00 },
 		{ name: "Chips", category: "Snack", price: 2.00 },
@@ -228,16 +228,22 @@
 		{ name: "Triangolini Vegani -6pz", category: "Fritti", price: 6.00 },
 
 		<!-- CATEGORIA BURGERS -->
-                { name: "Bacon Burger", category: "Burgers", price: 5.00 },
-		{ name: "Bosco Burger", category: "Burgers", price: 5.00 },
-		{ name: "Cheese Burger", category: "Burgers", price: 5.00 },
-		{ name: "Crispy Chicken Burger", category: "Burgers", price: 5.00 },
-		{ name: "Paradice Chicken Burger", category: "Burgers", price: 5.00 },
-		{ name: "Il Vegano", category: "Burgers", price: 5.00, customColor: "#00FF00"  },
-		{ name: "Double Trouble Burger", category: "Burgers", price: 5.00 },
-		{ name: "Pulled Pork", category: "Burgers", price: 5.00 },
-		{ name: "Veggie", category: "Burgers", price: 5.00, customColor: "#00FF00" },
-		{ name: "Vulcano Burger", category: "Burgers", price: 5.00, customColor: "red" },
+                { name: "Bacon Burger", category: "Burgers", price: 11.00 },
+		{ name: "Bosco Burger", category: "Burgers", price: 14.00 },
+		{ name: "Cheese Burger", category: "Burgers", price: 10.00 },
+		{ name: "Crispy Chicken Burger", category: "Burgers", price: 10.00 },
+		{ name: "Paradice Chicken Burger", category: "Burgers", price: 12.00 },
+		{ name: "Il Vegano", category: "Burgers", price: 10.00, customColor: "#00FF00"  },
+		{ name: "Double Trouble Burger", category: "Burgers", price: 18.00 },
+		{ name: "Pulled Pork", category: "Burgers", price: 13.00 },
+		{ name: "Veggie", category: "Burgers", price: 12.00, customColor: "#00FF00" },
+		{ name: "Vulcano Burger", category: "Burgers", price: 12.00, customColor: "red" },
+
+	        <!-- CATEGORIA INSALATE -->
+                { name: "Caesar Salad", category: "Insalate", price: 8.50 },
+		{ name: "Mex Salad", category: "Insalate", price: 9.00 },
+		{ name: "Veggie Salad", category: "Insalate", price: 8.50, customColor: "#00FF00" },
+		{ name: "Paradice Salad", category: "Insalate", price: 9.00 },
 		
 		
 		<!-- CATEGORIA Dolci -->
@@ -259,7 +265,7 @@
         const div = document.createElement('div');
         div.className = 'product';
         div.innerHTML = `
-          <!-- <strong>${prod.name}</strong><br>${prod.price.toFixed(2)}<br> -->
+     <!-- <strong>${prod.name}</strong><br>${prod.price.toFixed(2)}<br> -->
 	  <strong style="color: ${prod.customColor || '#00f0ff'};">${prod.name}</strong><br>
           <button onclick="addToOrder('${prod.name}')">Aggiungi</button>
         `;
