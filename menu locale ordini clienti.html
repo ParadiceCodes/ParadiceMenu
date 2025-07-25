@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menu Cliente Paradice Food & Drink</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1a0826;
+      color: #ffffff;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #ffe600;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #ffe600;
+	  position: sticky;
+      top: 0;
+      background-color: #1a0826;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    select, button {
+      margin: 10px 5px;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    select {
+      background-color: #333;
+      color: white;
+    }
+
+    button {
+      background-color: #ff00cc;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff33dd; <!-- colre rosa sfondo aggiungi -->
+    }
+
+    .product {
+      margin: 15px auto;
+      background: #2a0b3b;
+      border-radius: 15px;
+      padding: 15px;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+	  animation: fadeIn 0.5s ease-in-out;
+    }
+	    @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+		                  }
+
+    .product strong {
+      color: #00f0ff;
+      font-size: 1.2rem;
+    }
+
+    #orderSummary {
+      margin-top: 40px;
+    }
+
+    table {
+      margin: 0 auto;
+      width: 90%;
+      border-collapse: collapse;
+      background-color: #2a0b3b;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #555;
+      padding: 10px;
+      color: #fff;
+    }
+
+    th {
+      background-color: #3a104d;
+      color: #ff33dd;  <!-- colore scritte tabella -->
+    }
+
+    td button.remove {
+      color: red;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    #totalPrice {
+      margin-top: 20px;
+      font-size: 1.4rem;
+      color: #00ff90;
+      text-shadow: 0 0 3px #00ff90;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(#ff0040 3px, transparent 4px),
+        radial-gradient(#ffe600 3px, transparent 4px),
+        radial-gradient(#00ff90 3px, transparent 4px);
+      background-position: 20px 40px, 100px 200px, 200px 300px;
+      background-size: 150px 150px;
+      background-repeat: repeat;
+      opacity: 0.1;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍔🍸  MENU' PARADICE</h1>
+
+
+
+  <div>
+    <h2><label for="categorySelect">Scegli quello che ti ispira!</label></h2>
+    <select id="categorySelect" onchange="showProducts()">
+      <option value="">-- Seleziona --</option>
+	  
+	  <!-- CATEGORIE -->
+	  
+      <option value="Snack">Snack</option>
+      <option value="Fritti">Fritti</option>
+      <option value="Dolci">Dolci</option>
+	  
+	  
+    </select>
+  </div>
+
+  <div id="productList"></div>
+
+  <div id="orderSummary">
+    <h3 id="totalPrice">Totale: 0.00</h3>
+    <h2>il tuo ordine comprende <br>👇 </h2>  
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Prodotto</th>
+          <th>Quantita'</th>
+          <th>Prezzo</th> 
+          <th>Totale</th>
+          <th>Azioni</th>
+        </tr>
+      </thead>
+      <tbody id="summaryList"></tbody>
+    </table>  <!-- CHIUSURA TABLE PRINCIPALE -->
+	<button onclick="clearOrder()">Svuota Ordine</button>
+	
+	<p style="margin-top: 20px; font-size: 1.2rem; color: #ffe600; font-weight: bold;">
+            Quando hai finito, chiama un cameriere o un membro del personale ☝ per comunicare il tuo ordine! <br>GRAZIE !
+    </p>
+	<!-- TESTO CHE SCORRE -->
+		  <p>
+		  <font color="#00BFFF" face="Copperplate Gothic Bold" >
+		  <marquee behavior="scroll" direction="left">SOLO PER QUESTA SETTIMANA PROVA IL NOSTRO SMASH BURGER !!</marquee>
+		  </font>
+		  </p>
+
+  </div>
+
+<tr> 
+    
+     <td align="right">
+     <a href="https://www.instagram.com/paradicefood_drink?igsh=ZTB1eTZnM3k0eGQx" style="color:#ff33dd; text-decoration:none;">
+     <h2>📸 Instagram</h2>
+     </a>
+     </td>
+ 
+     <td align="right">
+     <a href="http://www.google.com" style="color:#ff33dd; text-decoration:none;">
+     <h2>📄 Scarica il menù</h2>
+     </a>
+     </td>
+	 
+</tr>
+
+
+
+  <script>
+    const menuData = {
+      categories: ["Snack", "Fritti", "Dolci"],
+      products: [
+	  <!-- CATEGORIA SNACK -->
+        { name: "Arachidi", category: "Snack", price: 2.00 },
+        { name: "Nachos", category: "Snack", price: 4.00 },
+		{ name: "Nachos Con Cheddar e Jalapeno", category: "Snack", price: 6.00 },
+		{ name: "Olive", category: "Snack", price: 3.00 },
+		{ name: "Chips", category: "Snack", price: 2.00 },
+		{ name: "Pistacchi", category: "Snack", price: 3.00 },
+		
+		
+		<!-- CATEGORIA FRITTI -->
+        { name: "Alette di Pollo -5pz", category: "Fritti", price: 5.00 },
+		{ name: "Cheddar Sticks -5pz", category: "Fritti", price: 5.00 },
+		{ name: "Chili Cheese Nuggets -7pz", category: "Fritti", price: 5.00 },
+		{ name: "Mozzarella Sticks -5pz", category: "Fritti", price: 5.00 },
+		{ name: "Nachos Cheese Bites -4pz", category: "Fritti", price: 5.00 },
+		{ name: "Nuggets di Pollo -5pz", category: "Fritti", price: 5.00 },
+		{ name: "Onion Rings -6pz", category: "Fritti", price: 5.00 },
+		{ name: "Patatine Fritte", category: "Fritti", price: 4.00 },
+		{ name: "Mushroom Bites", category: "Fritti", price: 5.00 },
+		{ name: "Polpettine di Melanzana -6pz", category: "Fritti", price: 5.00 },
+		{ name: "Triangolini Vegani -6pz", category: "Fritti", price: 6.00 },
+		
+		
+		<!-- CATEGORIA Dolci -->
+        { name: "Tiramisu", category: "Dolci", price: 5.00 },
+      ]
+    };
+
+    let order = [];
+
+    function showProducts() {
+      const cat = document.getElementById('categorySelect').value;
+      const container = document.getElementById('productList');
+      container.innerHTML = '';
+
+      if (!cat) return;
+
+      const prods = menuData.products.filter(p => p.category === cat);
+      prods.forEach(prod => {
+        const div = document.createElement('div');
+        div.className = 'product';
+        div.innerHTML = `
+          <strong>${prod.name}</strong><br>${prod.price.toFixed(2)}<br>
+          <button onclick="addToOrder('${prod.name}')">Aggiungi</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function addToOrder(productName) {
+      const prod = menuData.products.find(p => p.name === productName);
+      const existingIndex = order.findIndex(item => item.name === prod.name);
+
+      if (existingIndex >= 0) {
+        order[existingIndex].quantity += 1;
+      } else {
+        order.push({ ...prod, quantity: 1 });
+      }
+      updateSummary();
+    }
+function clearOrder() {
+      order = [];
+      updateSummary();}
+	  
+    function removeFromOrder(index) {
+      if (order[index].quantity > 1) {
+        order[index].quantity -= 1;
+      } else {
+        order.splice(index, 1);
+      }
+      updateSummary();
+    }
+
+    function updateSummary() {
+  const tbody = document.getElementById('summaryList');
+  tbody.innerHTML = '';
+  let total = 0;
+
+  // Raggruppa per categoria
+  const grouped = {};
+  order.forEach(item => {
+    if (!grouped[item.category]) {
+      grouped[item.category] = [];
+    }
+    grouped[item.category].push(item);
+  });
+
+  // Ordina categorie in base a menuData.categories
+  menuData.categories.forEach(category => {
+    const items = grouped[category];
+    if (items) {
+      // Intestazione categoria
+      const catRow = document.createElement('tr');
+      catRow.innerHTML = `<td colspan="1" style="font-weight:bold; background-color:#3a104d; color:#ffe600;">${category}</td>`;
+      tbody.appendChild(catRow);
+
+      items.forEach((item, i) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.quantity}</td>
+          <td>${item.price.toFixed(2)}</td>
+          <td>${subtotal.toFixed(2)}</td>
+          <td><button class="remove" onclick="removeFromOrder(${order.indexOf(item)})">rimuovi</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  });
+
+  document.getElementById('totalPrice').textContent = `Totale: ${total.toFixed(2)}`;
+  
+}
+
+    showProducts();
+    updateSummary();
+  </script>
+</body>
+</html>
