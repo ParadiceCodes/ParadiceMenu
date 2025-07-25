@@ -135,9 +135,17 @@
 	  
 	  <!-- CATEGORIE -->
 	  
-      <option value="Snack">Snack</option>
-      <option value="Fritti">Fritti</option>
-      <option value="Dolci">Dolci</option>
+          <option value="Snack">Snack</option>
+          <option value="Fritti">Fritti</option>
+	  <option value="Burgers">Burgers</option>
+	  <option value="Insalate">Insalate</option>
+	  <option value="Aperitivi & Taglieri">Aperitivi & Taglieri</option>
+	  <option value="Paradice Combo">Paradice Combo</option>
+	  <option value="Piatti Messicani">Piatti Messicani</option>
+          <option value="Dolci">Dolci</option>
+	  <option value="Drinks">Drinks</option>
+	  <option value="Spritz">Spritz</option>
+	  <option value="Caffetteria">Caffetteria</option>
 	  
 	  
     </select>
@@ -207,7 +215,7 @@
 		
 		
 		<!-- CATEGORIA FRITTI -->
-        { name: "Alette di Pollo -5pz", category: "Fritti", price: 5.00 },
+                { name: "Alette di Pollo -5pz", category: "Fritti", price: 5.00 },
 		{ name: "Cheddar Sticks -5pz", category: "Fritti", price: 5.00 },
 		{ name: "Chili Cheese Nuggets -7pz", category: "Fritti", price: 5.00 },
 		{ name: "Mozzarella Sticks -5pz", category: "Fritti", price: 5.00 },
@@ -218,6 +226,18 @@
 		{ name: "Mushroom Bites", category: "Fritti", price: 5.00 },
 		{ name: "Polpettine di Melanzana -6pz", category: "Fritti", price: 5.00 },
 		{ name: "Triangolini Vegani -6pz", category: "Fritti", price: 6.00 },
+
+		<!-- CATEGORIA BURGERS -->
+                { name: "Bacon Burger", category: "Burgers", price: 5.00 },
+		{ name: "Bosco Burger", category: "Burgers", price: 5.00 },
+		{ name: "Cheese Burger", category: "Burgers", price: 5.00 },
+		{ name: "Crispy Chicken Burger", category: "Burgers", price: 5.00 },
+		{ name: "Paradice Chicken Burger", category: "Burgers", price: 5.00 },
+		{ name: "Il Vegano", category: "Burgers", price: 5.00, customColor: "#00FF00"  },
+		{ name: "Double Trouble Burger", category: "Burgers", price: 5.00 },
+		{ name: "Pulled Pork", category: "Burgers", price: 5.00 },
+		{ name: "Veggie", category: "Burgers", price: 5.00, customColor: "#00FF00" },
+		{ name: "Vulcano Burger", category: "Burgers", price: 5.00, customColor: "red" },
 		
 		
 		<!-- CATEGORIA Dolci -->
@@ -239,7 +259,8 @@
         const div = document.createElement('div');
         div.className = 'product';
         div.innerHTML = `
-          <strong>${prod.name}</strong><br>${prod.price.toFixed(2)}<br>
+          <!-- <strong>${prod.name}</strong><br>${prod.price.toFixed(2)}<br> -->
+	  <strong style="color: ${prod.customColor || '#00f0ff'};">${prod.name}</strong><br>
           <button onclick="addToOrder('${prod.name}')">Aggiungi</button>
         `;
         container.appendChild(div);
