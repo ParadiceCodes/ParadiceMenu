@@ -4,10 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Menu Cliente Paradice Food & Drink</title>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #1a0826;
+      font-family: 'Poppins', sans-serif;
+      background-color: #000000;        /*colore sfondo*/
       color: #ffffff;
       margin: 0;
       padding: 20px;
@@ -21,7 +22,7 @@
       text-shadow: 0 0 5px #ffe600;
 	  position: sticky;
       top: 0;
-      background-color: #1a0826;
+      background-color: #000000;  /*colore strisci titolo*/
       padding: 10px 0;
       z-index: 1000;
     }
@@ -121,6 +122,11 @@
       opacity: 0.1;
       z-index: -1;
     }
+	
+  .mini {
+    font-size: 32px;
+  }
+
   </style>
 </head>
 <body>
@@ -139,12 +145,13 @@
       <option value="Fritti">Fritti</option>
 	  <option value="Burgers">Burgers</option>
 	  <option value="Insalate">Insalate</option>
-	  <option value="Aperitivi & Taglieri">Aperitivi & Taglieri</option>
-	  <option value="Paradice Combo">Paradice Combo</option>
 	  <option value="Piatti Messicani">Piatti Messicani</option>
       <option value="Dolci">Dolci</option>
+	  <option value="Bevande">Bevande</option>
 	  <option value="Drinks">Drinks</option>
 	  <option value="Spritz">Spritz</option>
+	  <option value="Birre">Birre</option>
+	  <option value="Artigianali">Artigianali</option>
 	  <option value="Caffetteria">Caffetteria</option>
 	  
 	  
@@ -162,7 +169,6 @@
         <tr>
           <th>Prodotto</th>
           <th>Quantita'</th>
-          <th>Prezzo</th> 
           <th>Totale</th>
           <th>Azioni</th>
         </tr>
@@ -203,77 +209,81 @@
 
   <script>
     const menuData = {
-      categories: ["Snack", "Fritti", "Burgers", "Insalate", "Aperitivi & Taglieri", "Paradice Combo", "Piatti Messicani", "Drinks", "Spritz", "Caffetteria", "Dolci"],
+      categories: ["Snack", "Fritti", "Insalate", "Burgers", "Piatti Messicani","Bevande", "Drinks", "Spritz", "Caffetteria", "Dolci", "Birre", "Artigianali"],
       products: [
-	  <!-- CATEGORIA SNACK -->
+	   
+	  
         { name: "Arachidi", category: "Snack", price: 2.00 },
         { name: "Nachos", category: "Snack", price: 4.00 },
-		{ name: "Nachos Con Cheddar e Jalapeno", category: "Snack", price: 6.00 },
+		{ name: "Nachos Con Cheddar", category: "Snack", price: 6.00 },
 		{ name: "Olive", category: "Snack", price: 3.00 },
-		{ name: "Chips", category: "Snack", price: 2.00 },
 		{ name: "Pistacchi", category: "Snack", price: 3.00 },
+		{ name: "Chips", category: "Snack", price: 2.00 },
 		
 		
-		<!-- CATEGORIA FRITTI -->
-        { name: "Alette di Pollo -5pz", category: "Fritti", price: 5.00 },
+		
+		
+        { name: "Alette di Pollo -5pz", category: "Fritti", price: 6.00 },
 		{ name: "Cheddar Sticks -5pz", category: "Fritti", price: 5.00 },
 		{ name: "Chili Cheese Nuggets -7pz", category: "Fritti", price: 5.00 },
 		{ name: "Mozzarella Sticks -5pz", category: "Fritti", price: 5.00 },
-		{ name: "Nachos Cheese Bites -4pz", category: "Fritti", price: 5.00 },
+		{ name: "Polpettine di Melanzana -6pz", category: "Fritti", price: 5.00 },
 		{ name: "Nuggets di Pollo -5pz", category: "Fritti", price: 5.00 },
 		{ name: "Onion Rings -6pz", category: "Fritti", price: 5.00 },
 		{ name: "Patatine Fritte", category: "Fritti", price: 4.00 },
-		{ name: "Mushroom Bites", category: "Fritti", price: 5.00 },
-		{ name: "Polpettine di Melanzana -6pz", category: "Fritti", price: 5.00 },
+		{ name: "Mushroom Bites -5pz", category: "Fritti", price: 5.00 },
 		{ name: "Triangolini Vegani -6pz", category: "Fritti", price: 6.00 },
 		
-			<!-- CATEGORIA BURGERS -->
-        { name: "Bacon Burger", category: "Burgers", price: 5.00 },
-		{ name: "Bosco Burger", category: "Burgers", price: 5.00 },
-		{ name: "Cheese Burger", category: "Burgers", price: 5.00 },
-		{ name: "Crispy Chicken Burger", category: "Burgers", price: 5.00 },
-		{ name: "Paradice Chicken Burger", category: "Burgers", price: 5.00 },
-		{ name: "Il Vegano", category: "Burgers", price: 5.00, customColor: "#00FF00"  },
-		{ name: "Double Trouble Burger", category: "Burgers", price: 5.00 },
-		{ name: "Pulled Pork", category: "Burgers", price: 5.00 },
-		{ name: "Veggie", category: "Burgers", price: 5.00, customColor: "#00FF00" },
-		{ name: "Vulcano Burger", category: "Burgers", price: 5.00, customColor: "red" },
-		
-		<!-- CATEGORIA INSALATE -->
-        { name: "Caesar Salad", category: "Insalate", price: 8.50 },
-		{ name: "Mex Salad", category: "Insalate", price: 9.00 },
-		{ name: "Veggie Salad", category: "Insalate", price: 8.50, customColor: "#00FF00" },
-		{ name: "Paradice Salad", category: "Insalate", price: 9.00 },
-		
-		<!-- CATEGORIA APERITIVI E TAGLIERI -->
-        { name: "Aperitivo Light <br> (Arachidi,Olive,Chips)", category: "Aperitivi & Taglieri", price: 4.00 },
-		{ name: "Classico <br> (Salumi,Formaggi,Crostini)", category: "Aperitivi & Taglieri", price: 7.00 },
-		{ name: "Green <br> (Verdure Grigliate,Hummus,Bruschetta)", category: "Aperitivi & Taglieri", price: 7.00, customColor: "#00FF00" },
-		{ name: "Messicano <br> (Nachos,Mix Tacos)", category: "Aperitivi & Taglieri", price: 10.00 },
-		{ name: "Paradice Plus x2 <br> (Salumi,Formaggi,Mix Fritti ", category: "Aperitivi & Taglieri", price: 18.00 },
-		
-		<!-- CATEGORIA COMBO -->
-        { name: "Classic Fried Paradice", category: "Paradice Combo", price: 10.00 },
-		{ name: "Burger Paradice", category: "Paradice Combo", price: 12.00 },
-		{ name: "Mex Paradice Explosion", category: "Paradice Combo", price: 15.00 },
-		{ name: "Spicy Paradice", category: "Paradice Combo", price: 10.00, customColor: "red"  },
-		
-		<!-- CATEGORIA MESSICANO ARRIBAAA -->
-        { name: "Tacos Triplete", category: "Piatti Messicani", price: 9.00 },
-		{ name: "Quesadilla Loca", category: "Piatti Messicani", price: 12.00 },
-		{ name: "Burrito Supremo", category: "Piatti Messicani", price: 8.00 },
+			
+        { name: "Bacon Burger <br> •Bacon, Cheddar, Iceberg, Pomodoro, Salsa Burger ", category: "Burgers", price: 11.00 },
+		{ name: "Bosco Burger <br> •Lardo, Provola, Funghi Porcini, Senape", category: "Burgers", price: 14.00 },
+		{ name: "Cheese Burger <br> •Cheddar, Insalata, Pomodoro, Cetriolini, Ketchup & Maionese", category: "Burgers", price: 10.00 },
+		{ name: "Crispy Chicken Burger <br> •Cotoletta di Pollo, Insalata, Pomodoro, Maionese", category: "Burgers", price: 10.00 },
+		{ name: "Pulled Pork <br> •Maiale Sfilacciato, Iceberg, Pomodoro, Cipolla Caramellata, BBQ", category: "Burgers", price: 13.00 },
+		{ name: "Smash Burger <br> •Pan Patata, Cipolla, Bacon, Cheddar con Salsa a", category: "Burgers", price: 13.00 },
+		{ name: "Vulcano Burger <br> •Iceberg, Cipolla, Cheddar, Bacon, Salsa Piccante", category: "Burgers", price: 13.00, customColor: "red" },
+		{ name: "Double Trouble Burger <br> •Doppio Burgers, Cheddar, Bacon, Iceberg, Pomodoro, Ketchup & Maionese", category: "Burgers", price: 18.00 },
+		{ name: "Paradice Chicken Burger <br> •Cotoletta di Pollo, Insalata, Pomodoro, Bacon, Cheddar, Senape al Miele", category: "Burgers", price: 12.00 },
+		{ name: "Green Burger <br> •Bun Vegano, Burger Vegetale, Insalata e Pomodoro", category: "Burgers", price: 12.00, customColor: "#00FF00"  },
 		
 		
-		<!-- CATEGORIA DOLCI -->
-        { name: "Tiramisu <br> (Classico o Pistacchio)", category: "Dolci", price: 5.00 },
-		{ name: "Cheese Cake <br> (Fragola,Frutti di Bosco,Nutella,Pistacchio)", category: "Dolci", price: 5.00 },
-		{ name: "Pancakes <br> (Sciroppo D'acero o Fragole)", category: "Dolci", price: 5.00 },
-		{ name: "Coppa Gelato <br> (Crema o Cioccolato)", category: "Dolci", price: 4.00 },
-		{ name: "Sweet Paradice <br> (Caramel Pecan Brownie)", category: "Dolci", price: 6.00 },
-		{ name: "Waffle <br> (Fragola,Frutti di Bosco,Nutella,Pistacchio) ", category: "Dolci", price: 5.00 },
-		{ name: "Lotus Cake", category: "Dolci", price: 6.00 },
 		
-		<!-- CATEGORIA DRINKS -->
+        { name: "Caesar Salad <br> •Iceberg, Pollo,Crostini, Scaglie Parmigiano, Salsa Caesar", category: "Insalate", price: 8.50 },
+		{ name: "Mex Salad <br> •Iceberg, Pomodorini, Pollo, Fagioli Rossi, Jalapeño, Mayo Spicy", category: "Insalate", price: 9.00 },
+		{ name: "Paradice Salad <br> •Iceberg, Pomodorini, Mais, Tonno e Cipolla", category: "Insalate", price: 9.00 },
+		{ name: "Veggie Salad <br> •Iceberg, Pomodoro, Mozzarella,Verdure, Hummus di ceci", category: "Insalate", price: 8.50, customColor: "#00FF00" },
+		
+		
+		
+		
+		
+        { name: "Tacos Triplete <br> •Tre Tacos a base di Chili di Carne, Pollo e Verdure", category: "Piatti Messicani", price: 9.00 },
+		{ name: "Quesadilla Loca <br> •Tortilla Con Cheddar Fuso, jalapeños, verdure e pulled pork", category: "Piatti Messicani", price: 12.00 },
+		{ name: "Burrito Supremo <br> •Con Chili di Carne, Insalata, Fagioli Rossi e Cipolla Fresca", category: "Piatti Messicani", price: 8.00 },
+		{ name: "Chili Combo <br> •Chili Con Carne e Piadine ", category: "Piatti Messicani", price: 8.00 },
+		
+		
+		
+       
+		
+		{ name: "Pancakes <br> •Sciroppo D'acero o Fragole", category: "Dolci", price: 5.00 },
+		{ name: "Coppa Gelato <br> •Crema o Cioccolato", category: "Dolci", price: 4.00 },
+		{ name: "Sweet Paradice <br> •Un Brownie Speciale", category: "Dolci", price: 6.00 },
+		{ name: "Waffle <br> •Fragola,Frutti di Bosco,Nutella,Pistacchio ", category: "Dolci", price: 5.00 },
+		{ name: "Lotus Cake <br> •Cheesecake dal gusto unico con crema Lotus", category: "Dolci", price: 6.00 },
+		
+		
+		{ name: "Acqua Piccola", category: "Bevande", price: 1.50 },
+		{ name: "Coca Cola Vetro <br> •Normale o Zero", category: "Bevande", price: 2.50 },
+		{ name: "Fanta Vetro", category: "Bevande", price: 2.50 },
+		{ name: "Sprite Vetro", category: "Bevande", price: 2.50 },
+		{ name: "Thé <br> •Limone o Pesca ", category: "Bevande", price: 2.50 },
+		{ name: "Acqua Grande", category: "Bevande", price: 3.00 },
+		{ name: "Coca Cola Grande <br> •Normale o Zero", category: "Bevande", price: 3.50 },
+		{ name: "Fanta Grande", category: "Bevande", price: 3.50 },
+	
+		
+		
         { name: "Amaretto Sour", category: "Drinks", price: 7.00 },
 		{ name: "Americano", category: "Drinks", price: 7.00 },
 		{ name: "Boulevardier", category: "Drinks", price: 7.00 },
@@ -288,15 +298,23 @@
 		{ name: "Gin Lemon", category: "Drinks", price: 7.00 },
 		{ name: "Gin Tonic", category: "Drinks", price: 7.00 },
 		
-		<!-- CATEGORIA SPRITZ -->
+		
         { name: "Aperol Spritz", category: "Spritz", price: 5.00 },
 		{ name: "Campari Spritz", category: "Spritz", price: 5.00 },
 		{ name: "Hugo Spritz", category: "Spritz", price: 5.00 },
 		{ name: "Limoncello Spritz", category: "Spritz", price: 5.00 },
 		{ name: "Passion Spritz", category: "Spritz", price: 5.00 },
-		{ name: "Paradice Spritz", category: "Spritz", price: 5.00 },
 		
-			<!-- CATEGORIA CAFFEINAAA -->
+		
+		{ name: "Messina Cristalli di Sale", category: "Birre", price: 4.00 },
+		{ name: "Ichnusa “non filtrata”", category: "Birre", price: 3.00 },
+		{ name: "Menabrea", category: "Birre", price: 4.00 },
+		
+		
+		{ name: "Hausbier 33cl <br> Lager 5,0%", category: "Artigianali", price: 5.00 },
+		{ name: "Choose a fucking big television 33cl<br> Double I.P.A 8,0%", category: "Artigianali", price: 5.00 },
+		{ name: "Zaubeziege 33cl <br> Bock 6,5%", category: "Artigianali", price: 5.00 },
+			
         { name: "Espresso", category: "Caffetteria", price: 1.20 },
 		{ name: "Cappuccino", category: "Caffetteria", price: 1.60 },
 		{ name: "Cappuccino di Soia", category: "Caffetteria", price: 1.80 },
@@ -387,7 +405,6 @@ function clearOrder() {
         tr.innerHTML = `
           <td>${item.name}</td>
           <td>${item.quantity}</td>
-          <td>${item.price.toFixed(2)}</td>
           <td>${subtotal.toFixed(2)}</td>
           <td><button class="remove" onclick="removeFromOrder(${order.indexOf(item)})">rimuovi</button></td>
         `;
