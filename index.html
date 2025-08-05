@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Menu Cliente Paradice Food & Drink</title>
+  <title>Menu Cliente Paradice Food & Drink Sala</title>
    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     body {
@@ -93,6 +93,7 @@
       background-color: #3a104d;
       color: #ff33dd;  <!-- colore scritte tabella -->
     }
+	
 
     td button.remove {
       color: red;
@@ -130,13 +131,17 @@
   </style>
 </head>
 <body>
-  <h1>🍔🍸  MENU' PARADICE</h1>
+   <h1>🍔🍸  MENU'<span style="color:#FC52AE;">PARAD</span><span style="color:#04C1D6;"> ICE</span> </h1>
 
 
 
   <div>
-    <h2><label for="categorySelect">Scegli quello che ti ispira!</label></h2>
-    <select id="categorySelect" onchange="showProducts()">
+  <h2>Come funziona?</h2> 
+      1. Scegli le categorie che ti ispirano<br>
+      2. Aggiungi i tuoi piatti preferiti<br>
+      3. Chiama il cameriere per ordinare!<br>
+	
+      <select id="categorySelect" onchange="showProducts()">
       <option value="">-- Seleziona --</option>
 	  
 	  <!-- CATEGORIE -->
@@ -177,9 +182,7 @@
     </table>  <!-- CHIUSURA TABLE PRINCIPALE -->
 	<button onclick="clearOrder()">Svuota Ordine</button>
 	
-	<p style="margin-top: 20px; font-size: 1.2rem; color: #ffe600; font-weight: bold;">
-            Finito? chiama un cameriere e comunica il tuo ordine! <br>GRAZIE !
-    </p>
+
 	<!-- TESTO CHE SCORRE -->
 		  <p>
 		  <font color="#00BFFF" face="Copperplate Gothic Bold" >
@@ -190,17 +193,20 @@
   </div>
 
 <tr> 
-    
-     <td align="right">
-     <a href="https://www.instagram.com/paradicefood_drink?igsh=ZTB1eTZnM3k0eGQx" style="color:#ff33dd; text-decoration:none;">
-     <h2>📸 Instagram</h2>
-     </a>
-     </td>
- 
-     <td align="right">
-     <a href="http://www.google.com" style="color:#ff33dd; text-decoration:none;">
-     <h2>📄 Scarica il menù</h2>
-     </a>
+     <!-- link per instagram -->
+      <td align="center">
+      <!-- link per menu-->
+      <a href="http://www.google.com" style="color:#ffffff; text-decoration:none;">
+      <h2>📥 Menu PDF</h2>
+       </a>
+	    <!-- link per instagram -->
+       <a href="https://www.instagram.com/paradicefood_drink?igsh=ZTB1eTZnM3k0eGQx" style="color:#ff33dd; text-decoration:none;">
+       <h2>📷 Instagram</h2>
+       </a>
+	  <!-- link per libro ingredienti-->
+       <a href="http://www.google.com" style="color:#ff33dd; text-decoration:none;">
+       <h2>📖 Consulta il Libro Allergeni</h2>
+       </a>
      </td>
 	 
 </tr>
@@ -213,7 +219,7 @@
       products: [
 	   
 	  
-        { name: "Arachidi", category: "Snack", price: 2.00 },
+        { name: "Arachidi", category: "Snack", price: 2.00, description: "(Croccanti e Saporiti)" },
         { name: "Nachos", category: "Snack", price: 4.00 },
 		{ name: "Nachos Con Cheddar", category: "Snack", price: 6.00 },
 		{ name: "Olive", category: "Snack", price: 3.00 },
@@ -235,12 +241,13 @@
 		{ name: "Triangolini Vegani -6pz", category: "Fritti", price: 6.00 },
 		
 			
-        { name: "Bacon Burger <br> •Bacon, Cheddar, Iceberg, Pomodoro, Salsa Burger ", category: "Burgers", price: 11.00 },
+			
+        { name: "Bacon Burger", category: "Burgers", description: "(Bacon, Cheddar, Iceberg, Pomodoro, Salsa Burger)", price: 11.00 },
 		{ name: "Bosco Burger <br> •Lardo, Provola, Funghi Porcini, Senape", category: "Burgers", price: 14.00 },
 		{ name: "Cheese Burger <br> •Cheddar, Insalata, Pomodoro, Cetriolini, Ketchup & Maionese", category: "Burgers", price: 10.00 },
 		{ name: "Crispy Chicken Burger <br> •Cotoletta di Pollo, Insalata, Pomodoro, Maionese", category: "Burgers", price: 10.00 },
 		{ name: "Pulled Pork <br> •Maiale Sfilacciato, Iceberg, Pomodoro, Cipolla Caramellata, BBQ", category: "Burgers", price: 13.00 },
-		{ name: "Smash Burger <br> •Pan Patata, Cipolla, Bacon, Cheddar con Salsa a", category: "Burgers", price: 13.00 },
+		{ name: "Smash Burger <br> •Pan Patata, Cipolla, Bacon, Cheddar con Salsa a Piacere", category: "Burgers", price: 13.00 },
 		{ name: "Vulcano Burger <br> •Iceberg, Cipolla, Cheddar, Bacon, Salsa Piccante", category: "Burgers", price: 13.00, customColor: "red" },
 		{ name: "Double Trouble Burger <br> •Doppio Burgers, Cheddar, Bacon, Iceberg, Pomodoro, Ketchup & Maionese", category: "Burgers", price: 18.00 },
 		{ name: "Paradice Chicken Burger <br> •Cotoletta di Pollo, Insalata, Pomodoro, Bacon, Cheddar, Senape al Miele", category: "Burgers", price: 12.00 },
@@ -341,8 +348,12 @@
         const div = document.createElement('div');
         div.className = 'product';
         div.innerHTML = `
-          <!-- <strong>${prod.name}</strong><br>${prod.price.toFixed(2)}<br> -->
-          <strong style="color: ${prod.customColor};">${prod.name}</strong><br>${prod.price.toFixed(2)}<br>
+          
+          <strong style="color: ${prod.customColor};">${prod.name}</strong> <br>
+		  <span style="color: white; font-size: 0.85rem;">${prod.description || ''}</span><br>
+		  ${prod.price.toFixed(2)}<br>
+		  
+		  
 
           <button onclick="addToOrder('${prod.name}')">Aggiungi</button>
         `;
